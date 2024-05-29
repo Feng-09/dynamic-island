@@ -105,7 +105,7 @@ export default function Phone(props: any) {
             <div className="flex justify-between items-center w-full minWidget absolute top-2 px-2">
               <div className="flex">
                 <Image src={features[1].display} alt="phone" className="mr-1" />
-                <Timer answered={answered} />
+                <Timer answered={answered} islandApp={props.islandApp} />
               </div>      
               <Image src={features[1].callfreq} alt="call frequency" />        
             </div>
@@ -114,6 +114,7 @@ export default function Phone(props: any) {
     )
 }
 
+// eslint-disable-next-line react/display-name
 const Timer = memo((props: any) =>  {
     const timeRef: any = useRef(null)
 
@@ -124,12 +125,15 @@ const Timer = memo((props: any) =>  {
     }, [secs])
 
     if (props.answered) {
-    setInterval(() => {
+    const interv = setInterval(() => {
         secs++
         if (secs > 59) {
             mins++
             secs = 0
         }
+        if (props.islandApp != "phone") {
+          clearInterval(interv)
+        }        
         timeRef.current.innerHTML = mins + ":" + Math.floor(secs).toString().padStart(2, '0')
     }, 1000)
     }

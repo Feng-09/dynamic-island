@@ -79,6 +79,13 @@ const today = day + ' ' + currDate;
         <h1 className='font-sf text-white font-semibold text-[5.65625rem] leading-[6.75rem]'>{time}</h1>
       </div>
 
+      <div className='font-sf text-base opacity-50 text-white'>
+        <p>Click on App icons to access different islands</p>
+        <p>Click on island to focus</p>
+        <p>Click on screen to minimize island</p>
+        <p>Click on expanded island to view app page</p>
+      </div>
+
       <Apps setIslandApp={setIslandApp} />
 
       <div className='w-screen h-screen opacity-0 fixed' onClick={() => {setMinimize(true)}}></div>
@@ -90,7 +97,7 @@ function Island(props: any) {
     return (
     <div className="bg-black rounded-3xl w-fit h-fit fixed island flex justify-center items-start z-20">
       {
-        props.islandApp === "phone" ? (<Phone minimize={props.minimize} setMinimize={props.setMinimize} />)
+        props.islandApp === "phone" ? (<Phone minimize={props.minimize} setMinimize={props.setMinimize} islandApp={props.islandApp} />)
         : props.islandApp === "music" ? (<AppleMusic minimize={props.minimize} setMinimize={props.setMinimize} />)
         : props.islandApp === "bluetooth" ? (<Pods minimize={props.minimize} setMinimize={props.setMinimize} />)
         : props.islandApp === "faceID" ? (<FaceID />)
