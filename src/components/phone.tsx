@@ -13,7 +13,10 @@ export default function Phone(props: any) {
     const [call, setCall] = useState(true)
     const [answered, setAnswered] = useState(false)
     const [mini, setMini] = useState(false)
-    const width = window.screen.width;
+    let width: number;
+    if (typeof window !== 'undefined') {
+        width = window.screen.width
+    }   
     const { contextSafe } = useGSAP()
     const acceptTl: any = useRef()
     const widgetTl: any = useRef()

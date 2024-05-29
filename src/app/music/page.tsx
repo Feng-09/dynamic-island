@@ -11,7 +11,6 @@ import { Observer } from "gsap/all"
 export default function MusicExpanded() {
     gsap.registerPlugin(Observer)
     const { contextSafe } = useGSAP()
-    const width = window.screen.width
     const [display, setDisplay] = useState(true)
     const router = useRouter()
 

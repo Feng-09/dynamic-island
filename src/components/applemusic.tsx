@@ -11,7 +11,10 @@ import { useGSAP } from "@gsap/react";
 export default function AppleMusic(props: any) {
     const [mini, setMini] = useState(true)
     const widgetTl: any = useRef()
-    const width = window.screen.width
+    let width: number;
+    if (typeof window !== 'undefined') {
+        width = window.screen.width
+    }   
     const { contextSafe } = useGSAP()
     const router = useRouter()
 

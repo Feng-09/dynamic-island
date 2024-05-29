@@ -10,14 +10,13 @@ import { Observer } from "gsap/all"
 
 export default function ConnectedExpanded() {
     const { contextSafe } = useGSAP()
-    const width = window.screen.width
     const [display, setDisplay] = useState(true)
     const router = useRouter()
     gsap.registerPlugin(Observer)
 
     const left = contextSafe(() => {
         gsap.to(".cont", { width: "50px", height: "50px", left: 0, borderRadius: "30px", duration: 0.3, ease: "back.out" })
-        gsap.to(".cont", { y: "24px", x: width / 2, xPercent: -50, duration: 0.3, delay: 0.3, ease: "back.out" })
+        gsap.to(".cont", { y: "24px", xPercent: -50, duration: 0.3, delay: 0.3, ease: "back.out" })
         gsap.to(".cont", { width: "176px", height: "34px", duration: 0.3, delay: 0.6, ease: "back.out" })
 
         setTimeout(() => {
