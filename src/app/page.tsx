@@ -111,7 +111,7 @@ function Apps(props: any) {
   return (
     <div className='flex w-full items-center justify-between z-30 fixed bottom-40 p-6'>
       <div className='w-20 h-20 rounded-3xl flex justify-center items-center bg-white shadow shadow-slate-600' onClick={() => {props.setIslandApp("phone")}}>
-        <Image src={features[1].display} alt='Phone' className='w-10 h-10' />
+        <Image src="../../public/call.png" alt='Phone' className='w-10 h-10' />
       </div>
       <Image src={applemusic} alt='Apple Music' className='w-20 h-20 rounded-3xl shadow shadow-slate-600' onClick={() => {props.setIslandApp("music")}} />
       <div className='w-20 h-20 rounded-3xl flex justify-center items-center bg-blue-600 shadow shadow-slate-600' onClick={() => {props.setIslandApp("bluetooth")}}>
