@@ -15,7 +15,7 @@ import Image from 'next/image';
 import { features } from '@/features';
 
 export default function Home() {
-  const [minimize, setMinimize] = useState()
+  const [minimize, setMinimize] = useState<boolean>()
   const [islandApp, setIslandApp] = useState("bluetooth")
 
   const now = new Date();
