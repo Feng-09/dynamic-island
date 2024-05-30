@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation"
 import expandedapp from '../images/callexpanded.png'
 import gsap from "gsap"
 import { useGSAP } from "@gsap/react"
-import { useState } from "react"
-import { Observer } from "gsap/all"
+import { useEffect, useState } from "react"
+import Observer from "gsap/Observer"
 
 export default function PhoneExpanded() {
     const { contextSafe } = useGSAP()
@@ -42,11 +42,18 @@ export default function PhoneExpanded() {
         }, 600)
     })
 
-    Observer.create({
-        type: "touch",
-        onLeft: () => left(),
-        onRight: () => right(),
-    })
+    useEffect(() => {
+        Observer.create({
+            type: "touch",
+            onLeft: () => left(),
+            onRight: () => right(),
+        })
+    }, [])
+    // Observer.create({
+    //     type: "touch",
+    //     onLeft: () => left(),
+    //     onRight: () => right(),
+    // })
 
 
     return (
