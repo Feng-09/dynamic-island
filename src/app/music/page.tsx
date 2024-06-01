@@ -15,8 +15,8 @@ export default function MusicExpanded() {
     const router = useRouter()
 
     const left = contextSafe(() => {
-        gsap.to(".cont", { width: "50px", height: "50px", left: 0, borderRadius: "30px", duration: 0.3, ease: "back.out" })
-        gsap.to(".cont", { y: "24px", duration: 0.3, delay: 0.3, ease: "back.out" })
+        gsap.to(".cont", { width: "50px", height: "50px", y: "24px", left: 0, borderRadius: "30px", duration: 0.3, ease: "back.out" })
+        gsap.to(".cont", { left: "50%", xPercent: -50, delay: 0.3, duration: 0.3, ease: "back.out"  })
         gsap.to(".cont", { width: "176px", height: "34px", duration: 0.3, delay: 0.6, ease: "back.out" })
 
         setTimeout(() => {
@@ -25,12 +25,12 @@ export default function MusicExpanded() {
         
         setTimeout(() => {
             router.push('/')
-        }, 600)
+        }, 800)
     })
 
     const right = contextSafe(() => {
-        gsap.to(".cont", { width: "50px", height: "50px", right: 0, borderRadius: "30px", duration: 0.3, ease: "back.out" })
-        gsap.to(".cont", { y: "24px", duration: 0.3, delay: 0.3, ease: "back.out" })
+        gsap.to(".cont", { width: "50px", height: "50px", right: 0, y: "24px", borderRadius: "30px", duration: 0.3, ease: "back.out" })
+        gsap.to(".cont", { left: "50%", xPercent: -50, delay: 0.3, duration: 0.3, ease: "back.out"  })
         gsap.to(".cont", { width: "176px", height: "34px", duration: 0.3, delay: 0.6, ease: "back.out" })
 
         setTimeout(() => {
@@ -39,7 +39,7 @@ export default function MusicExpanded() {
         
         setTimeout(() => {
             router.push('/')
-        }, 600)
+        }, 800)
     })
 
     useEffect(() => {
@@ -49,11 +49,6 @@ export default function MusicExpanded() {
             onRight: () => right(),
         })
     })
-    // Observer.create({
-    //     type: "touch",
-    //     onLeft: () => left(),
-    //     onRight: () => right(),
-    // })
 
     return (
         <div className="w-screen h-screen fixed flex flex-col items-center bg">

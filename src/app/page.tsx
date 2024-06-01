@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use client"
 
 import { useState } from 'react'
@@ -79,14 +80,7 @@ const today = day + ' ' + currDate;
         <h1 className='font-sf text-white font-semibold text-[5.65625rem] leading-[6.75rem]'>{time}</h1>
       </div>
 
-      <div className='font-sf text-base opacity-50 text-white'>
-        <p>Click on App icons to access different islands</p>
-        <p>Click on island to focus</p>
-        <p>Click on screen to minimize island</p>
-        <p>Click on expanded island to view app page</p>
-      </div>
-
-      <Apps setIslandApp={setIslandApp} />
+      <Apps setIslandApp={setIslandApp} setMinimize={setMinimize} />
 
       <div className='w-screen h-screen opacity-0 fixed' onClick={() => {setMinimize(true)}}></div>
     </main>
@@ -110,14 +104,14 @@ function Island(props: any) {
 function Apps(props: any) {
   return (
     <div className='flex w-full items-center justify-between z-30 fixed bottom-40 p-6'>
-      <div className='w-20 h-20 rounded-3xl flex justify-center items-center bg-white shadow shadow-slate-600' onClick={() => {props.setIslandApp("phone")}}>
-        <Image src="../../public/call.png" alt='Phone' className='w-10 h-10' />
+      <div className='w-20 h-20 max-[419px]:w-16 max-[419px]:h-16 max-[359px]:w-12 max-[359px]:h-12 max-[359px]:rounded-2xl rounded-3xl flex justify-center items-center bg-white shadow shadow-slate-600' onClick={() => {props.setIslandApp("phone"); props.setMinimize(true)}}>
+        <Image src={features[1].display} alt='Phone' className='w-10 h-10' />
       </div>
-      <Image src={applemusic} alt='Apple Music' className='w-20 h-20 rounded-3xl shadow shadow-slate-600' onClick={() => {props.setIslandApp("music")}} />
-      <div className='w-20 h-20 rounded-3xl flex justify-center items-center bg-blue-600 shadow shadow-slate-600' onClick={() => {props.setIslandApp("bluetooth")}}>
+      <Image src={applemusic} alt='Apple Music' className='w-20 h-20 max-[419px]:w-16 max-[419px]:h-16 max-[359px]:w-12 max-[359px]:h-12 max-[359px]:rounded-2xl rounded-3xl shadow shadow-slate-600' onClick={() => {props.setIslandApp("music"); props.setMinimize(true)}} />
+      <div className='w-20 h-20 max-[419px]:w-16 max-[419px]:h-16 max-[359px]:w-12 max-[359px]:h-12 max-[359px]:rounded-2xl rounded-3xl flex justify-center items-center bg-blue-600 shadow shadow-slate-600' onClick={() => {props.setIslandApp("bluetooth"); props.setMinimize(true)}}>
         <Image src={bluetooth} alt='Bluetooth' className='w-10 h-10'  />
       </div>
-      <Image src={faceid} alt='FaceID' className='w-20 h-20 rounded-3xl shadow shadow-slate-600' onClick={() => {props.setIslandApp("faceID")}} />
+      <Image src={faceid} alt='FaceID' className='w-20 h-20 max-[419px]:w-16 max-[419px]:h-16 max-[359px]:w-12 max-[359px]:h-12 max-[359px]:rounded-2xl rounded-3xl shadow shadow-slate-600' onClick={() => {props.setIslandApp("faceID"); props.setMinimize(true)}} />
     </div>
   )
 }

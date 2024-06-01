@@ -43,7 +43,7 @@ export default function Phone(props: any) {
     }, [])
 
     useEffect(() => {
-      if (props.minimize && call) {
+      if (props.minimize && call && answered) {
         acceptTl.current.seek(0.3)
         acceptTl.current.play()
           setMini(true)
@@ -121,26 +121,29 @@ export default function Phone(props: any) {
 // eslint-disable-next-line react/display-name
 const Timer = memo((props: any) =>  {
     const timeRef: any = useRef(null)
+    const intervalRef = useRef(null)
 
     let secs = 0
     let mins = 0
 
     useEffect(() => {
-    }, [secs])
+      if (props.answered) {
+        const interv = setInterval(() => {
+            secs++
+            if (secs > 59) {
+                mins++
+                secs = 0
+            }
+            timeRef.current.innerHTML = mins + ":" + Math.floor(secs).toString().padStart(2, '0')
+        }, 1000)
 
-    if (props.answered) {
-    const interv = setInterval(() => {
-        secs++
-        if (secs > 59) {
-            mins++
-            secs = 0
-        }
-        if (props.islandApp != "phone") {
-          clearInterval(interv)
-        }        
-        timeRef.current.innerHTML = mins + ":" + Math.floor(secs).toString().padStart(2, '0')
-    }, 1000)
-    }
+        intervalRef.current = interv
+      }
+
+      return () => {
+        clearInterval(intervalRef.current)
+      }
+    }, [props.answered])    
 
     if (secs > 59) {
         mins++
